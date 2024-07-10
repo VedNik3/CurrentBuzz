@@ -90,26 +90,14 @@ exports.indexpage = async(req, res) =>{
     try {
   
         const user = req.user;
-        // console.log(user.id);
+       
         const topics = await Topic.find();
-        // console.log(topics);
+        
         const selectedTopics = await Selected.find({userId: user.id}).populate('userId').populate('topicId');
-        // const selectedTopics = await Selected.find();
-        // console.log(selectedTopics);
+        
         
        const selectedTopicArrays = selectedTopics.map(doc => doc.topicId).flat();
 
-    // const selectedTopicArrays = selectedTopics.map(doc => ({
-    //     topic: doc.topicId.map(topic => topic.topic),  // Assuming topic has a 'topic' field
-    //     imageurl: doc.topicId.map(topic => topic.imageurl)  // Assuming topic has an 'imageurl' field
-    // }));
-
-    //    const selectedTopicArrays = selectedTopics.map(doc => ({
-    //     topic: doc.topic.topic,
-    //     imageurl: doc.topic.imageurl  // Assuming each document has one image URL
-    // }));
-
-    //    console.log(selectedTopicArrays);
 
         res.render('index', {topics, selectedTopicArrays, user : req.user});
 
@@ -124,22 +112,13 @@ exports.remove = async(req,res) => {
     try {
 
         const user = req.user;
-        // const userId = user.id;
-        // console.log(userId);
-
-        // const select = await Selected.findById(userId).populate('user');
+       
         const topicIdToRemove = req.body.topicarrayId;
 
-        // console.log(select);
+        
         const selectedTopics = await Selected.find({userId: user.id});
 
-// console.log(selectedTopics);
-        // const selectedTopicArrays = selectedTopics.map(doc => doc._id).flat();
 
-
-        // console.log(selectedTopicArrays);
-
-        // Find the document that contains the topicIdToRemove
         let documentContainingTopic = null;
         for (const doc of selectedTopics) {
             if (doc.topicId.includes(topicIdToRemove)) {
@@ -156,9 +135,6 @@ exports.remove = async(req,res) => {
         // Remove the topicId from the document
         documentContainingTopic.topicId = documentContainingTopic.topicId.filter(topicId => !topicId.equals(topicIdToRemove));
 
-        // Save the updated document
-        // await documentContainingTopic.save();
-
         if (documentContainingTopic.topicId.length === 0) {
             // If array is empty, delete the whole document
             await documentContainingTopic.deleteOne();
@@ -169,13 +145,9 @@ exports.remove = async(req,res) => {
             await documentContainingTopic.save();
         }
 
-// console.log(selectedTopics);
-// console.log(topicremove);
 
 return res.redirect('/index');
 
-//    console.log(TopicId);
-// res.status(200).send({ message: 'topic removed successfully' });
         
     } catch (error) {
         console.error('Error removing Topic', error);
@@ -187,13 +159,12 @@ exports.view = async(req, res) => {
     try {
 
         const topicname = req.body.topicname
-        // console.log(topicname);
+        
        const userId = req.user.id;
 
        const userdata = await User.findById(userId)
-    //    console.log(userdata.language);
-
-        const API_KEY = 'x2418wAXS_6MEwpSGFf8WryPKtoTdQseASzynJYLKwXOGRiC';
+    
+        const API_KEY = process.env.API_KEY;
 
         const category = topicname.toLowerCase();
         const language = userdata.language;
@@ -204,14 +175,7 @@ exports.view = async(req, res) => {
 
         const articles = response.data.news;
 
-        // console.log(articles);
-
         res.render('newspage', { articles });
-
-        // console.log(category);
-
-
-        // res.status(200).send({ message: 'topic got successfully' });
         
     } catch (error) {
         console.error('Error fetching news:', error.message);
@@ -223,14 +187,13 @@ exports.view = async(req, res) => {
 exports.search = async(req, res) => {
     try {
      const word = req.query.search;
-    //  console.log(word);
+    
 
     const userId = req.user.id;
 
        const userdata = await User.findById(userId)
-    //    console.log(userdata.language);
 
-     const API_KEY = 'x2418wAXS_6MEwpSGFf8WryPKtoTdQseASzynJYLKwXOGRiC';
+    const API_KEY = process.env.API_KEY;
 
      const keywords = word.toLowerCase();
      const language = userdata.language;
@@ -241,11 +204,8 @@ exports.search = async(req, res) => {
 
      const articles = response.data.news;
 
-     // console.log(articles);
-
      res.render('newspage', { articles });
 
-        // res.status(200).send({ message: 'topic got successfully' });
     } catch (error) {
         console.error('Error fetching news:', error.message);
         res.status(500).json({ message: 'Error fetching news' });
@@ -258,10 +218,9 @@ exports.saveLanguage = async (req, res) => {
     try {
       const { language } = req.body;
   
-      // Assume you have the user ID from the session
-      const userId = req.user.id; // or however you manage user sessions
-    //   console.log(userId);
-    //   console.log(language);
+      
+      const userId = req.user.id;
+    
   
       // Find the user by ID and update their preferred language
       const user = await User.findByIdAndUpdate(userId, { language }, { new: true });

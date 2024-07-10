@@ -7,19 +7,12 @@ const selectedSchema = new mongoose.Schema({
         ref: "User",
     },
     
-    // topic: {
-    //     type: Schema.Types.Mixed
-       
-    //    },
     topicId: [{
         type: mongoose.Schema.Types.Mixed,
         ref: "Topic",
        
        }]
 
-    // imageurl:{
-    //     type: [String],
-    //    }
 });
 
 module.exports = mongoose.model('Selected', selectedSchema);

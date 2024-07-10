@@ -31,15 +31,12 @@ exports.submittopics = async(req, res) =>{
 
         
         const topics = await Topic.find(selectedTopics);
-        // console.log(topics);
-
+       
         const topicids = topics.map(t => t._id);
-        // console.log(topicids);
         
         await new Selected({
             userId: user.id,
             topicId: topicids
-            // imageurl: topicimg
             
         }).save();
 

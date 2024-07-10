@@ -24,7 +24,7 @@ exports.verifyToken = (req, res, next) => {
   exports.checkGuestUser = (req, res, next) => {
     // Check if the user is a guest
     if (req.user && req.user.isGuest) {
-        // return res.status(403).send('Access forbidden for guest users');
+        
         return res.redirect('/signin');
     }
   

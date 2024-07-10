@@ -3,16 +3,15 @@
     navLinks.forEach(link => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
-        // console.log('Link clicked:', link);
-        // link.classList.toggle('hidden');
+        
         navLinks.forEach(nav => {
           nav.style.backgroundColor = '';
           nav.style.color = '';
-          // nav.classList.remove('hidden');
+          
         });
         link.style.backgroundColor = '#0d6efd';
         link.style.color = 'white';
-        // link.classList.add('hidden');
+        
       });
       link.style.backgroundColor = '';
         link.style.color = '';
@@ -62,10 +61,6 @@
         }
         return response.json();
       })
-      // .then(data => {
-      //   // console.log('Language saved:', data);
-      //   // Optionally, do something with the response
-      // })
       .catch(error => {
         console.error('Error saving language:', error);
       });
