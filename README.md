@@ -20,3 +20,30 @@ CurrentBuzz is a personalized news website that allows users to customize their 
 * MongoDB: For storing user preferences and news data.
 * Currents API: For fetching up-to-date news articles.
 
+## Installation and Setup
+1. Clone the repository:
+   ```
+   git clone https://github.com/VedNik3/CurrentBuzz.git
+
+2. Go to the currentbuzz directory
+    ```
+    cd currentbuzz
+    
+3. Install Dependencies
+   ```
+   npm install
+   # this packages will be installed cookie-parser express express-session mongodb mongoose nodemon
+
+4. Run the server
+
+   ```
+   npm start
+   ```
+
+   the server will run on localhost:9000
+
+   
+    
+   
+
+
