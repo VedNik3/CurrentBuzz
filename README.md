@@ -25,9 +25,9 @@ CurrentBuzz is a personalized news website that allows users to customize their 
    ```
    git clone https://github.com/VedNik3/CurrentBuzz.git
 
-2. Go to the currentbuzz directory
+2. Go to the CurrentBuzz directory
     ```
-    cd currentbuzz
+    cd CurrentBuzz
     
 3. Install Dependencies
    ```
