@@ -24,17 +24,25 @@ CurrentBuzz is a personalized news website that allows users to customize their 
 1. Clone the repository:
    ```
    git clone https://github.com/VedNik3/CurrentBuzz.git
-
-2. Go to the currentbuzz directory
     ```
-    cd currentbuzz
-    
-3. Install Dependencies
-   ```
-   npm install
-   # this packages will be installed cookie-parser express express-session mongodb mongoose nodemon
 
-4. Run the server
+2. Go to the CurrentBuzz directory:
+    ```
+    cd CurrentBuzz
+     ```
+    
+3. Install Dependencies:
+   ```
+   npm install express
+   ```
+
+4. Set up database:
+   * Ensure MongoDB is installed and running on your machine with MongoDB Compass or Atlas
+   * In .env file you can change your URL for MongoDB connection, as per your need.
+     ![data file](
+      
+   
+6. Run the server:
 
    ```
    npm start
