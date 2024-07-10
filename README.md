@@ -36,24 +36,24 @@ CurrentBuzz is a personalized news website that allows users to customize their 
    npm install express
    ```
 
-4. Set up database:
-   * Ensure MongoDB is installed and running on your machine with MongoDB Compass or Atlas
-   * In .env file you can change your URL for MongoDB connection, as per your need.
-   * Import the `news.topics.json` file into your MongoDB database's `topics collection`. This 
-     file, located in the `jsondata folder`, contains the data of topics.
-     
-
-5. Get API Key:
+4. Get API Key:
    * visit the Currents API's [official website](https://currentsapi.services/en)
    * Signup for free, then generate the token.
    *  Copy the token and paste it into the `.env` file as the value for `API_KEY`.
 
    
-6. Run the server:
+5. Run the server:
 
    ```
    npm start
    ```
+   
+6. Set up database:
+   * Ensure MongoDB is installed and running on your machine with MongoDB Compass or Atlas
+   * In .env file you can change your URL for MongoDB connection, as per your need.
+   * Import the `news.topics.json` file into your MongoDB database's `topics collection`. This 
+     file, located in the `jsondata folder`, contains the data of topics.
+        
 7. Vist the application:
    * Open your browser and go to `http://localhost:9000`
    
