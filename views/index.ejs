@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>News Hackz</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+   
+    
+   
+  </head>
+  <body>
+    
+    <header class="p-3 mb-3 border-bottom bg-color-body">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+        
+          <p class="language">Languages</p>
+          <div class="dropdown">
+            
+            <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            </a>
+            <ul class="dropdown-menu text-small shadow" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="en">English</a></li>
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="hi">Hindi</a></li>
+              
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="de">German</a></li>
+              
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="es">Spanish</a></li>
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="fr">French</a></li>
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="zh">Chinese</a></li>
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="ja">Japanese</a></li>
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="tr">Turkish</a></li>
+              <li><a class="dropdown-item itemsdrop" href="#" data-lang="it">Italian</a></li>
+            </ul>
+          </div>
+
+
+           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+           
+          </ul> 
+          <div class="logo">
+            <img src="images/logo3.svg" alt="logo">
+          </div>
+       
+            
+        <div class="search-bar">
+          <form action="/search" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control" name="search" placeholder="Search..." aria-label="Search">
+          </form>
+        </div>
+            
+    
+           
+          </div>
+        </div>
+      </header>
+
+      <section class="contain-body">
+        <form id="topicsForm" action="/submit" method="POST">
+          <div id="part-1">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-color-body" style="width: 280px;">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                <span class="fs-4">Topics</span>
+              </a>
+              <hr>
+            <!-- <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;"> -->
+              <ul class="nav nav-pills flex-column mb-auto" id="sidebar-nav">
+                <% topics.forEach(topic => { %>
+                  <li class="nav-item">
+                    <% let isSelected = selectedTopicArrays.flat().some(selectedTopic => selectedTopic._id.toString() === topic._id.toString()); %>
+                    <% if (isSelected) { %>
+                      <label class="side-nav-topics" for="<%= topic.topic %>"><%= topic.topic %></label>
+                    <% } else { %>
+                      <input type="checkbox" id="<%= topic.topic %>" name="topic" value="<%= topic.topic %>">
+                      <label for="<%= topic.topic %>"><%= topic.topic %></label>
+                    <% } %>
+                  </li>
+                <% }) %>
+              </ul>
+              <hr>
+              <button type="submit" class="submit-button">Submit</button>
+              <hr>
+              <div class="dropdown text-end signup">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+                  
+                      <i class="fa-solid fa-user" alt="mdo" width="32" height="32" class="rounded-circle"></i>
+                   
+                  
+                </a>
+                <ul class="dropdown-menu text-small">
+                  
+                  <% if (user.username) { %>
+                    <li><a class="dropdown-item" href="/signout">Sign out</a></li>
+                   
+                <% } else { %>
+                  <li><a class="dropdown-item" href="./signin">Sign in</a></li>
+                <% } %>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+   <!-- Part 2: Selected Topics -->
+   <!-- <div class="card-container"> -->
+   <div id="part-2">
+    <div class="album py-5 bg-color-body fixed-container-width">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <% if (selectedTopicArrays.length > 0) { %>
+            <% selectedTopicArrays.forEach((topicArray, index) => { %>
+              <div class="col">
+                <div class="card shadow-sm">
+                  <img src="<%= topicArray.imageurl %>" class="card-img-top fixed-size-img" alt="<%= topicArray.topic %>">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= topicArray.topic %></h5>
+                    <p class="card-text"></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <form id="topickanaam_<%= topicArray.topic %>" action="/view" method="post">
+                          <input type="hidden" name="topicname" value="<%= topicArray.topic %>">
+                           <button type="submit" class="btn btn-sm btn-outline-secondary btn-view">View</button>
+                        </form>
+                        <form id="removingtopic_<%= topicArray._id %>" action="/remove" method="post">
+                          <input type="hidden" name="topicarrayId" value="<%= topicArray._id %>">
+                          <button type="submit" class="btn btn-sm btn-outline-secondary">Remove</button>
+                        </form>
+                      </div>
+                      <!-- <small class="text-body-secondary">9 mins</small> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <div class="col text-center">
+              <p class="no-text">No topics selected yet...</p>
+            </div>
+          <% } %>
+          
+        </div>
+    </div>
+  </div>
+   </div>
+            </section>     
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/5050694ff5.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
