@@ -18,4 +18,5 @@ CurrentBuzz is a personalized news website that allows users to customize their 
 * Express: As the web application framework for Node.js.
 * Node.js: For server-side scripting.
 * MongoDB: For storing user preferences and news data.
+* Currents API: For fetching up-to-date news articles.
 
