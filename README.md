@@ -56,6 +56,18 @@ CurrentBuzz is a personalized news website that allows users to customize their 
         
 7. Vist the application:
    * Open your browser and go to `http://localhost:9000`
+
+
+### Index page
+![index page](./views/screenshots/image1.png)
+
+### News page : 
+### English
+![news page](./views/screenshots/image2.png)
+
+ ### Hindi
+![news page](./views/screenshots/image3.png)
+
    
 
    
