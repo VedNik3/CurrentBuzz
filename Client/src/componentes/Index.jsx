@@ -154,7 +154,7 @@ const Index = () => {
         }
      try {
         
-        const response = await axios.post('http://localhost:5000/api/frontpage/submit',newlySelectedTopics, {
+        const response = await axios.post(`${API_END_POINT_FRONTPAGE}/submit`,newlySelectedTopics, {
             headers: {
                  Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
