@@ -20,20 +20,23 @@ app.use(express.json());
 //   saveUninitialized: true,
 // }));
 
+// const corsOptions = {
+//   origin: [
+//     'https://current-buzz812.vercel.app', 
+//     'http://localhost:5173'  // Keep local development URL
+//   ],
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// };
+
 const corsOptions = {
-  origin: [
+   origin: [
     'https://current-buzz812.vercel.app', 
     'http://localhost:5173'  // Keep local development URL
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  ], 
+  credentials: true,
 };
-
-// const corsOptions = {
-//   origin: 'http://localhost:5173', 
-//   credentials: true,
-// };
 app.use(cors(corsOptions));
 
 
