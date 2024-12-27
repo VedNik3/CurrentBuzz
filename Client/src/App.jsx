@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Index from './componentes/Index'
-import SignIn from './componentes/Signin';
+import SignIn from './componentes/SignIn';
 import SignUp from './componentes/SignUp';
 import NewsPage from './componentes/NewsPage';
 
