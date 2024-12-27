@@ -22,7 +22,7 @@ app.use(express.json());
 
 const corsOptions = {
   origin: [
-    'https://current-buzz812.vercel.app/', 
+    'https://current-buzz812.vercel.app', 
     'http://localhost:5173'  // Keep local development URL
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
