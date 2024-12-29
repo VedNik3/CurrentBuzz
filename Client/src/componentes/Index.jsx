@@ -33,7 +33,7 @@ const Index = () => {
 
     const handlesearch = async (query) => {
     try {
-        console.log(query);
+        // console.log(query);
         const response = await axios.post(`${API_END_POINT_USER}/search`,{query},{
             headers: {
                 Authorization: `Bearer ${token}`,
